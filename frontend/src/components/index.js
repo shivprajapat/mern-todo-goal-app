@@ -1,5 +1,7 @@
 import Header from "./Header";
+import GoalItem from "./GoalItem";
 
 export {
-    Header
+    Header,
+    GoalItem
 }

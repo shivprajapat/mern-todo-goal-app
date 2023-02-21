@@ -5,7 +5,7 @@ import { FaSignInAlt, FaUser } from 'react-icons/fa'
 
 const Header = () => {
     return (
-        <Navbar bg="primary" variant="dark">
+        <Navbar fixed='top' bg="primary" variant="dark">
             <Container>
                 <Navbar.Brand to="/" as={Link}>
                     GoalSetter
