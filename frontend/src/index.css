@@ -7,7 +7,66 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body .navbar-brand {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+.custom-spinner {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+section h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+input:focus,
+button:focus {
+  box-shadow: none !important;
+}
+
+.form-control:focus {
+  border-color: #489d4b !important;
+}
+
+nav .nav-link {
+  padding: 8px 15px !important;
+  border-radius: 5px;
+  color: white;
+  width: fit-content;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav .nav-link svg{margin-right: 5px;}
+nav .nav-link:hover,
+nav .nav-link.active {
+  background-color: #55b159;
+  color: white;
+}
+
+nav .nav-link:first-child {
+  margin-right: 8px;
+}
+
+.invalid-feedback {
+  display: block !important;
+  font-weight: 600;
+}
+
+input {
+  outline: none;
+}
+
+body .bg-primary {
+  background-color: #489d4b !important;
 }
