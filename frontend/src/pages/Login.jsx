@@ -39,9 +39,9 @@ const Login = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <div className="input-group">
+            <div className="icon-input">
               <Form.Control type={show ? "text" : "password"} placeholder='Enter your password' name='password' onChange={onChange} value={password} />
-              <button className="eye" onClick={eyeButton}>{show ? <FaEye /> : <FaRegEyeSlash />}</button>
+              <span className="eye" onClick={eyeButton}>{show ? <FaEye /> : <FaRegEyeSlash />}</span>
             </div>
                       </Form.Group>
           <Button variant="primary" mr={2} type="submit">

@@ -4,30 +4,48 @@ import { FaUser, FaEye, FaRegEyeSlash } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
-  const isLoading = false
+  const [show, setShow] = useState(false)
+  const isLoading = false;
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     password2: '',
   })
-  const [show, setShow] = useState(false)
-  const { name, email, password, password2 } = formData;
+
+  const { name, email, password, password2 } = formData
+
+  const navigate = useNavigate()
+
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }))
   }
+
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log('e :>> ', e);
-  }
 
+    if (password !== password2) {
+      alert('Passwords do not match')
+    } else {
+      const userData = {
+        name,
+        email,
+        password,
+      }
+      return userData
+    }
+  }
   const eyeButton = () => {
     setShow(!show)
   }
-  const navigate = useNavigate()
+  if (isLoading) {
+    return <div className='loadingSpinnerContainer'>
+      <div className='loadingSpinner'></div>
+    </div>
+  }
   return (
     <section className='auth'>
       <div className='form-wrapper shadow'>
@@ -46,14 +64,14 @@ const Register = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <div className="input-group">
+            <div className="icon-input">
               <Form.Control type={show ? "text" : "password"} placeholder='Enter your password' name='password' onChange={onChange} value={password} />
-              <button className="eye" onClick={eyeButton}>{show ? <FaEye /> : <FaRegEyeSlash />}</button>
+              <span className="eye" onClick={eyeButton}>{show ? <FaEye /> : <FaRegEyeSlash />}</span>
             </div>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword2">
             <Form.Label>Confirm Password</Form.Label>
-            <Form.Control type="password" placeholder='Enter your password' name='password2' onChange={onChange} value={password2} />
+            <Form.Control type="password" placeholder='Confirm password' name='password2' onChange={onChange} value={password2} />
           </Form.Group>
           <Form.Group className="d-flex justify-content-between align-items-center" controlId="formBasicPassword2">
 
