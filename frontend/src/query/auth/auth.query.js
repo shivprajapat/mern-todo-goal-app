@@ -10,7 +10,7 @@ export async function register({ name, email, password }) {
 }
 
 export async function login({ email, password }) {
-  return await axios.post('/login', {
+  return await axios.post('/users/login', {
     email,
     password
   })

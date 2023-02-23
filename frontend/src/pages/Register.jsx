@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { Button, Form, Spinner } from 'react-bootstrap'
 import { FaUser, FaEye, FaRegEyeSlash } from 'react-icons/fa'
 import { useMutation } from 'react-query'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { register } from '../query/auth/auth.query'
 
 const Register = () => {
-  const [show, setShow] = useState(false)
+  const [eyePassword, setEyePassword] = useState(false)
+  const [eyePassword1, setEyePassword1] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,14 +27,16 @@ const Register = () => {
   }
 
   const passwordToggle = () => {
-    setShow(!show)
+    setEyePassword(!eyePassword)
   }
-
+  const passwordToggle1 = () => {
+    setEyePassword1(!eyePassword1)
+  }
   const { mutate, isLoading } = useMutation(register, {
     onSuccess: (response) => {
       console.log({ response })
       localStorage.setItem('token', response.headers.authorization)
-      navigate('/')
+      navigate('/login')
     }
   })
   const onSubmit = (e) => {
@@ -67,22 +70,22 @@ const Register = () => {
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <div className="icon-input">
-              <Form.Control type={show ? "text" : "password"} placeholder='Enter your password' name='password' onChange={onChange} value={password} />
-              <span className="eye" onClick={passwordToggle}>{show ? <FaEye /> : <FaRegEyeSlash />}</span>
+              <Form.Control type={eyePassword ? "text" : "password"} placeholder='Enter your password' name='password' onChange={onChange} value={password} />
+              <span className="eye" onClick={passwordToggle}>{eyePassword ? <FaEye /> : <FaRegEyeSlash />}</span>
             </div>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword2">
             <Form.Label>Confirm Password</Form.Label>
-            <Form.Control type="password" placeholder='Confirm password' name='password2' onChange={onChange} value={password2} />
+            <div className="icon-input">
+            <Form.Control type={eyePassword1 ? "text" : "password"} placeholder='Confirm password' name='password2' onChange={onChange} value={password2} />
+            <span className="eye" onClick={passwordToggle1}>{eyePassword1 ? <FaEye /> : <FaRegEyeSlash />}</span>  </div>
           </Form.Group>
-          <Form.Group className="d-flex justify-content-between align-items-center" controlId="formBasicPassword2">
+          <Form.Group className="text-center">
 
             <Button variant="primary" type="submit">
               {isLoading ? <Spinner animation="border" size="sm" /> : "Register"}
             </Button>
-            <Button variant="primary" onClick={() => navigate("/login")}>
-              Login
-            </Button>
+            <Link to='/login'>Login</Link>
           </Form.Group>
         </Form>
       </div>

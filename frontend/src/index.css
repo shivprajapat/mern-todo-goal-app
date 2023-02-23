@@ -142,7 +142,16 @@ form .btn-primary {
   border-color: #489d4b !important;
   background-color: rgb(245, 247, 248);
 }
-
+.form-wrapper  a{
+  display: block;
+  text-transform: capitalize;
+  color: #489d4b;
+  text-decoration: none;
+  margin-top: 10px;
+  font-size: 16px;
+  font-family: 'Courgette', cursive;
+font-weight: 600;
+}
 .icon-input{
   position: relative;
 }
