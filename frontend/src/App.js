@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Header } from './components'
+import { Loading } from 'components'
 import { Dashboard, Login, Register } from './pages'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
@@ -9,12 +9,11 @@ export const queryClient = new QueryClient()
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <Header />
-      <Suspense fallback={<div className='custom-spinner'>loading....</div>}>
+      <Suspense fallback={<Loading />}>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Register />} />
+          <Route index path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Suspense>
     </QueryClientProvider>

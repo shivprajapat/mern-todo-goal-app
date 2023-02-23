@@ -4,6 +4,6 @@ export function navigationTo(link) {
 }
 
 export function removeToken() {
-    localStorage.clear('')
+    // localStorage.clear('')
     sessionStorage.clear('')
 }

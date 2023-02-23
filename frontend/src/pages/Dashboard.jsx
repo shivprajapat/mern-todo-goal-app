@@ -1,27 +1,19 @@
+import { Header } from 'components'
 import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap';
-import GoalItem from '../components/GoalItem';
+import { Container } from 'react-bootstrap'
 
 const Dashboard = () => {
   return (
     <section className='dashboard'>
+      <Header />
       <Container>
         <div className='d-flex align-items-center justify-content-between flex-wrap mb-3'>
           <article>
             <h1>Goal List</h1>
           </article>
         </div>
-        <Row>
-          {
-            new Array(1).fill("").map((id) => (
-              <Col xxl={4} md={6} key={id}>
-                <GoalItem />
-              </Col>
-            ))
-          }
-        </Row>
-      </Container>
-    </section>
+        </Container>
+        </section>
   )
 }
 

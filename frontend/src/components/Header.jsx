@@ -1,13 +1,14 @@
 import React from 'react'
 import { Button, Container, Nav, Navbar } from 'react-bootstrap'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { FaSignInAlt, FaUser } from 'react-icons/fa'
 
 const Header = () => {
-    const loading = false;
-
-    const handleLogout = ()=>{
+    const user = localStorage.getItem('token');
+    const navigate = useNavigate()
+    const handleLogout = () => {
         localStorage.clear();
+        navigate('/')
     }
     return (
         <Navbar fixed='top' bg="primary" variant="dark">
@@ -19,11 +20,11 @@ const Header = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
                         {
-                            loading ? <Button onClick={handleLogout}><FaSignInAlt /> <span>Logout</span></Button>
+                            user ? <Button onClick={handleLogout}><FaSignInAlt /> <span>Logout</span></Button>
                                 :
                                 <>
                                     <Nav.Link as={NavLink} to="/login"><FaSignInAlt /> <span>Login</span></Nav.Link>
-                                    <Nav.Link as={NavLink} to="/register"><FaUser /> <span>Register</span></Nav.Link>
+                                    <Nav.Link as={NavLink} to="/"><FaUser /> <span>Register</span></Nav.Link>
                                 </>
                         }
                     </Nav>

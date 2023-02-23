@@ -35,7 +35,7 @@ const Register = () => {
   const { mutate, isLoading } = useMutation(register, {
     onSuccess: (response) => {
       console.log({ response })
-      localStorage.setItem('token', response.headers.authorization)
+      localStorage.setItem('token', response.data.token)
       navigate('/login')
     }
   })

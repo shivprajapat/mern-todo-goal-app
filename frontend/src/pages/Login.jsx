@@ -29,8 +29,8 @@ const Login = () => {
   const { mutate, isLoading } = useMutation(login, {
     onSuccess: (response) => {
       console.log({ response })
-      localStorage.setItem('token', response.headers.authorization)
-      navigate('/')
+      localStorage.setItem('token', response.data.token)
+      navigate('/dashboard')
     }
   })
   const onSubmit = (e) => {
