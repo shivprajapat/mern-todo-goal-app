@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { Button, Form, Spinner } from 'react-bootstrap'
 import { FaUser, FaEye, FaRegEyeSlash } from 'react-icons/fa'
+import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
+import { register } from '../query/auth/auth.query'
 
 const Register = () => {
   const [show, setShow] = useState(false)
-  const isLoading = false;
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,27 +25,28 @@ const Register = () => {
     }))
   }
 
+  const passwordToggle = () => {
+    setShow(!show)
+  }
+
+  const { mutate, isLoading } = useMutation(register, {
+    onSuccess: (response) => {
+      console.log({ response })
+      localStorage.setItem('token', response.headers.authorization)
+      navigate('/')
+    }
+  })
   const onSubmit = (e) => {
     e.preventDefault()
-
     if (password !== password2) {
       alert('Passwords do not match')
     } else {
-      const userData = {
+      return mutate({
         name,
         email,
         password,
-      }
-      return userData
+      })
     }
-  }
-  const eyeButton = () => {
-    setShow(!show)
-  }
-  if (isLoading) {
-    return <div className='loadingSpinnerContainer'>
-      <div className='loadingSpinner'></div>
-    </div>
   }
   return (
     <section className='auth'>
@@ -66,7 +68,7 @@ const Register = () => {
             <Form.Label>Password</Form.Label>
             <div className="icon-input">
               <Form.Control type={show ? "text" : "password"} placeholder='Enter your password' name='password' onChange={onChange} value={password} />
-              <span className="eye" onClick={eyeButton}>{show ? <FaEye /> : <FaRegEyeSlash />}</span>
+              <span className="eye" onClick={passwordToggle}>{show ? <FaEye /> : <FaRegEyeSlash />}</span>
             </div>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword2">

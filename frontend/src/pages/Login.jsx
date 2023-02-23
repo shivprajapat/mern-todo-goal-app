@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault()
     console.log('e :>> ', e);
   }
-  const eyeButton = () => {
+  const passwordToggle = () => {
     setShow(!show)
   }
   return (
@@ -41,7 +41,7 @@ const Login = () => {
             <Form.Label>Password</Form.Label>
             <div className="icon-input">
               <Form.Control type={show ? "text" : "password"} placeholder='Enter your password' name='password' onChange={onChange} value={password} />
-              <span className="eye" onClick={eyeButton}>{show ? <FaEye /> : <FaRegEyeSlash />}</span>
+              <span className="eye" onClick={passwordToggle}>{show ? <FaEye /> : <FaRegEyeSlash />}</span>
             </div>
                       </Form.Group>
           <Button variant="primary" mr={2} type="submit">
