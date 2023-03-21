@@ -68,10 +68,10 @@ const Register = () => {
   return (
     <section className='auth'>
       <div className='form-wrapper shadow'>
-        <article>
+        <div>
           <h1><FaUser /> <span>Register</span></h1>
           <p>Please create an account</p>
-        </article>
+        </div>
         <Form onSubmit={onSubmit}>
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>Name</Form.Label>

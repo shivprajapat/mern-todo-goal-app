@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import { CustomSpinner } from "components";
+import { CreateGoal, CustomSpinner, Header } from "components";
 import { Dashboard, Login, Register } from "./pages";
 import { Toaster } from "react-hot-toast";
 import ProtectedRoute from "routers/ProtectedRoute";
@@ -11,13 +11,19 @@ const App = () => {
   return (
     <>
       <Suspense fallback={<CustomSpinner />}>
+
+        {user && <Header />}
+
         <Routes>
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+
           <Route element={<ProtectedRoute isAuthenticated={user} />}>
 
             <Route path="/" element={<Dashboard />} />
-
+            <Route path="/create-goal" element={<CreateGoal />} />
+            
           </Route>
         </Routes>
       </Suspense>

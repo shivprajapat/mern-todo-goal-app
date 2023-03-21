@@ -32,24 +32,29 @@ body .navbar-brand {
 
 article {
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form-wrapper>div {
   text-align: center;
 }
 
-article h1 {
+h1 {
   font-weight: 600;
   font-family: 'Courgette', cursive;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 30px;
+  margin-bottom: 0;
 }
 
-article h1 span {
+.form-wrapper h1 span {
   margin-left: 10px;
 }
 
-article h1 svg,
-article p {
+.form-wrapper h1 svg,
+.form-wrapper p {
   color: #489d4b;
   margin: 0;
 
@@ -184,7 +189,7 @@ form .btn-primary {
   color: #fff;
 }
 
-.dashboard {
+.space {
   margin-top: 90px;
 }
 

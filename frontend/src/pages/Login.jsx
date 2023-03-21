@@ -57,10 +57,10 @@ const Login = () => {
   return (
     <section className='auth'>
       <div className='form-wrapper shadow'>
-        <article>
+        <div>
           <h1><FaSignInAlt /> <span>Login</span></h1>
           <p>Login and start setting goals</p>
-        </article>
+        </div>
         <Form onSubmit={onSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
