@@ -1,6 +1,6 @@
-import { Header } from 'components'
+import { GoalItem, Header } from 'components'
 import React from 'react'
-import { Container } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
 
 const Dashboard = () => {
   return (
@@ -12,8 +12,13 @@ const Dashboard = () => {
             <h1>Goal List</h1>
           </article>
         </div>
-        </Container>
-        </section>
+        <Row>
+          <Col lg={4}>
+            <GoalItem />
+          </Col>
+        </Row>
+      </Container>
+    </section>
   )
 }
 

@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Form, Spinner } from 'react-bootstrap'
 import { FaSignInAlt, FaEye, FaRegEyeSlash } from 'react-icons/fa'
-import { useMutation } from 'react-query'
-import { Link, useNavigate } from 'react-router-dom'
-import { login } from '../query/auth/auth.query'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   const [show, setShow] = useState(false)
@@ -11,9 +9,8 @@ const Login = () => {
     email: '',
     password: '',
   })
-
+  const isLoading = false;
   const { email, password } = formData
-  const navigate = useNavigate()
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -26,16 +23,8 @@ const Login = () => {
     setShow(!show)
   }
 
-  const { mutate, isLoading } = useMutation(login, {
-    onSuccess: (response) => {
-      console.log({ response })
-      localStorage.setItem('token', response.data.token)
-      navigate('/dashboard')
-    }
-  })
   const onSubmit = (e) => {
     e.preventDefault()
-    mutate({ email, password })
   }
   return (
     <section className='auth'>
@@ -58,10 +47,10 @@ const Login = () => {
           </Form.Group>
           <Form.Group className="text-center">
 
-          <Button variant="primary" mr={2} type="submit">
-            {isLoading ? <Spinner animation="border" size="sm" /> : "Submit"}
-          </Button>
-          <Link to='/register'>register</Link>
+            <Button variant="primary" mr={2} type="submit">
+              {isLoading ? <Spinner animation="border" size="sm" /> : "Submit"}
+            </Button>
+            <Link to='/register'>register</Link>
           </Form.Group>
         </Form>
       </div>

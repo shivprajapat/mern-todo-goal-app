@@ -17,7 +17,9 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/api/goals', require("./routes/goalRoutes"))
 app.use('/api/users', require("./routes/userRoutes"))
-
+app.get('/',(req,res)=>{
+    res.send({message:"Hello Goals!"});
+})
 app.use(errorHandler)
 
 app.listen(port, () => console.log(`Server Magic port ✅ : ${port}`))

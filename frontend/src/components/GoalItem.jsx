@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Card, Spinner } from 'react-bootstrap'
 
 const GoalItem = () => {
-    const isLoading =false
+  const isLoading = false
   return (
     <Card className='shadow border-0 mb-3'>
       <Card.Body>

@@ -1,23 +1,21 @@
-import React, { Suspense } from 'react'
-import { Route, Routes } from 'react-router-dom'
-import { Loading } from 'components'
-import { Dashboard, Login, Register } from './pages'
-import { QueryClient, QueryClientProvider } from 'react-query'
-
-export const queryClient = new QueryClient()
-
+import React, { Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+import { Loading } from "components";
+import { Dashboard, Login, Register } from "./pages";
+import { Toaster } from "react-hot-toast";
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <Suspense fallback={<Loading />}>
         <Routes>
-          <Route path="/" element={<Register />} />
+          <Route path="/" element={<Dashboard />} />
           <Route index path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Suspense>
-    </QueryClientProvider>
-  )
-}
+      <Toaster position="top-right" reverseOrder={false} />
+    </>
+  );
+};
 
-export default App
+export default App;
