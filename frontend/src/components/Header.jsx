@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Container, Nav, Navbar } from 'react-bootstrap'
+import { Container, Nav, Navbar } from 'react-bootstrap'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { FaSignInAlt, FaUser } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
