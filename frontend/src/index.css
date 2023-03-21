@@ -75,8 +75,11 @@ nav .nav-link svg {
   margin-right: 5px;
 }
 
-nav .nav-link:hover,
-nav .nav-link.active {
+nav .logout {
+  margin-right: 0 !important;
+}
+
+nav .nav-link {
   background-color: #55b159;
   color: white;
 }

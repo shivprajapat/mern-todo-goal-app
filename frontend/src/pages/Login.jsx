@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
-import { Button, Form, Spinner } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 import { FaSignInAlt, FaEye, FaRegEyeSlash } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { login, reset } from '../features/auth/authSlice'
+import { toast } from 'react-hot-toast'
+import { CustomSpinner } from 'components'
+import { useEffect } from 'react'
 
 const Login = () => {
   const [show, setShow] = useState(false)
@@ -9,8 +14,24 @@ const Login = () => {
     email: '',
     password: '',
   })
-  const isLoading = false;
-  const { email, password } = formData
+  const { email, password } = formData;
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message)
+    }
+    if (isSuccess || user) {
+      navigate('/')
+    }
+    dispatch(reset())
+
+  }, [user, isError, isSuccess, message, navigate, dispatch])
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -25,6 +46,13 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
+    const userData = {
+      email, password
+    }
+    dispatch(login(userData))
+  }
+  if (isLoading) {
+    return <CustomSpinner />
   }
   return (
     <section className='auth'>
@@ -47,9 +75,7 @@ const Login = () => {
           </Form.Group>
           <Form.Group className="text-center">
 
-            <Button variant="primary" mr={2} type="submit">
-              {isLoading ? <Spinner animation="border" size="sm" /> : "Submit"}
-            </Button>
+            <Button variant="primary" mr={2} type="submit">Submit</Button>
             <Link to='/register'>register</Link>
           </Form.Group>
         </Form>

@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
 
 const Header = () => {
-    
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { user } = useSelector((state) => state.auth)
@@ -26,7 +26,7 @@ const Header = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
                         {
-                            user ? <Button onClick={handleLogout}><FaSignInAlt /> <span>Logout</span></Button>
+                            user ? <Nav.Link className='logout' onClick={handleLogout}><FaSignInAlt /> <span>Logout</span></Nav.Link>
                                 :
                                 <>
                                     <Nav.Link as={NavLink} to="/login"><FaSignInAlt /> <span>Login</span></Nav.Link>
