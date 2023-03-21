@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { register, reset } from '../features/auth/authSlice'
 import { toast } from 'react-hot-toast'
+import { CustomSpinner } from 'components'
 
 const Register = () => {
   const [eyePassword, setEyePassword] = useState(false)
@@ -61,8 +62,8 @@ const Register = () => {
       dispatch(register(userData))
     }
   }
-  if(isLoading){
-    return <h1>loading...</h1>
+  if (isLoading) {
+    return <CustomSpinner />
   }
   return (
     <section className='auth'>

@@ -1,9 +1,9 @@
 import Header from "./Header";
 import GoalItem from "./GoalItem";
-import Loading from "./loading";
+import CustomSpinner from "./CustomSpinner";
 
 export {
     Header,
     GoalItem,
-    Loading
+    CustomSpinner
 }

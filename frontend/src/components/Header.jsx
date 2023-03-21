@@ -2,12 +2,18 @@ import React from 'react'
 import { Button, Container, Nav, Navbar } from 'react-bootstrap'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { FaSignInAlt, FaUser } from 'react-icons/fa'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout, reset } from '../features/auth/authSlice'
 
 const Header = () => {
-    const user = localStorage.getItem('token');
+    
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const { user } = useSelector((state) => state.auth)
+
     const handleLogout = () => {
-        localStorage.clear();
+        dispatch(logout())
+        dispatch(reset())
         navigate('/')
     }
     return (

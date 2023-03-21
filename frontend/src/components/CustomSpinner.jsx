@@ -1,12 +1,12 @@
 import React from 'react'
 import { Spinner } from 'react-bootstrap'
 
-const Loading = () => {
+const CustomSpinner = () => {
   return (
     <div className='custom-spinner'>
-        <Spinner animation="border" />
-      </div>
+      <Spinner animation="border" />
+    </div>
   )
 }
 
-export default Loading
+export default CustomSpinner
