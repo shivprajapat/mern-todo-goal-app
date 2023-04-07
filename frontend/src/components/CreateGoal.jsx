@@ -3,19 +3,23 @@ import React, { useEffect, useState } from 'react'
 import { Button, Form, Col, Container, Row, Spinner } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom';
 
 const CreateGoal = () => {
     const [text, setText] = useState('')
     const dispatch = useDispatch()
-
-    const { isLoading, isError, message } = useSelector((state) => state.goals)
+    const navigate = useNavigate()
+     
+    const { isLoading, isSuccess, isError, message } = useSelector((state) => state.goals)
 
     useEffect(() => {
         if (isError) {
             toast.error(message)
         }
-
-    }, [isError, message,])
+        if (isSuccess) {
+            navigate('/')
+        }
+    }, [isLoading, isSuccess, isError, message,navigate,dispatch])
 
     const onSubmit = (e) => {
         e.preventDefault()
